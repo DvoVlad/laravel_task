@@ -92,7 +92,8 @@ class DocumentController extends Controller
 	 * 
 	 * */
 	public function navShow(){
-		$docs = Document::where("status","=","published")->paginate($_GET['perPage']);
+		$perPage = $_GET['perPage'] ?? 20;
+		$docs = Document::where("status","=","published")->paginate($perPage);
 		$resultItems = [];
 		foreach($docs as $elems){
 			$resultItems[] = $elems;
