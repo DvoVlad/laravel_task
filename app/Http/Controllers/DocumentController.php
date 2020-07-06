@@ -32,7 +32,7 @@ class DocumentController extends Controller
 		// Получаем json запрос от пользователя
 		$jsonRequest = $request->getContent();
 		// Устанавливаем заголовок ответа
-		if($doc->status == 'draft'){
+		if($doc->status == 'draft') {
 			// Преобразуем в массив
 			$jsonToArray = json_decode($jsonRequest, true);
 			// Проверяем payload на существование
@@ -91,11 +91,12 @@ class DocumentController extends Controller
 	/*
 	 * 
 	 * */
-	public function navShow(){
+	public function navShow()
+    {
 		$perPage = $_GET['perPage'] ?? 20;
 		$docs = Document::where("status","=","published")->paginate($perPage);
 		$resultItems = [];
-		foreach($docs as $elems){
+		foreach($docs as $elems) {
 			$resultItems[] = $elems;
 		}
 		//dd($docs);
